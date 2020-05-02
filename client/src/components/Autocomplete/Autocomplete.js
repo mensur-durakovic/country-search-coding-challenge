@@ -47,7 +47,7 @@ export default class Autocomplete extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.enteredText !== this.state.enteredText && !this.state.suggestionClicked) {
-      this.callBackend();
+      this.fetchSuggestionsData();
     }
   }
 
@@ -71,7 +71,7 @@ export default class Autocomplete extends Component {
     });
   };
 
-  callBackend = async (e) => {
+  fetchSuggestionsData = async (e) => {
     try {
       clearTimeout(this.timer);
       const enteredFilter = this.state.enteredText.toLowerCase();
@@ -89,7 +89,10 @@ export default class Autocomplete extends Component {
           filteredSuggestions: response.data.countries.map((c) => c.name),
           displaySuggestions: true,
         });
+
+        //focus search input after side effect is finished
         this.searchInputRef.current.focus();
+
       }, 500);
     } catch (error) {
       console.error("Error on fetching countries", error);
@@ -138,6 +141,9 @@ export default class Autocomplete extends Component {
     });
   };
 
+  /**
+   * keydown handler for better UX
+   */
   keyDownHandler = (e) => {
     const { currentSuggestionIndex, filteredSuggestions } = this.state;
 
