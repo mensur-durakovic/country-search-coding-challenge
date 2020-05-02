@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
       __dirname,
       "../../utils/countries_metadata.json"
     );
-    
+
     fs.readFile(filePath, "utf8", (err, fileContent) => {
       if (err) {
         throw err;
@@ -50,9 +50,7 @@ router.get("/", async (req, res) => {
 
 router.get("/distance", async (req, res) => {
   try {
-    console.log("search countries", config);
     const result = await axios.get(`/check?access_key=${config.ipStackApiKey}`);
-    console.log("result", result.data);
     res.status(200).send(result.data);
   } catch (error) {
     console.error("Unexpected error on  /api/distance", error);
