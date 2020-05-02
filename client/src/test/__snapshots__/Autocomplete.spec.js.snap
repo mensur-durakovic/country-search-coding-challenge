@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Autocomplete component 1`] = `
+Array [
+  <label
+    htmlFor="countriesAutocompleteInput"
+  >
+    Simple autocomplete
+  </label>,
+  <input
+    autoComplete="new-password"
+    className="input"
+    disabled={false}
+    id="countriesAutocompleteInput"
+    onChange={[Function]}
+    onKeyDown={[Function]}
+    placeholder="type something"
+    type="text"
+    value=""
+  />,
+]
+`;
