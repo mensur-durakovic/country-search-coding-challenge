@@ -9,19 +9,22 @@ const utilies = require("../../utils/utilies");
 
 router.get("/", async (req, res) => {
   try {
-    const searchTerm = req.query.searchTerm ? req.query.searchTerm.toLowerCase() : '';
-    const usersGeoPoint = await utilies.getUsersCurrentGeoPoint();
+    const searchTerm = req.query.searchTerm
+      ? req.query.searchTerm.toLowerCase()
+      : "";
 
+    const usersGeoPoint = await utilies.getUsersCurrentGeoPoint();
+    
     const filePath = path.join(
       __dirname,
-      "../../utils/",
-      "countries_metadata.json"
+      "../../utils/countries_metadata.json"
     );
-    fs.readFile(filePath, "utf8", (err, data) => {
+    
+    fs.readFile(filePath, "utf8", (err, fileContent) => {
       if (err) {
         throw err;
       }
-      const countriesData = JSON.parse(data);
+      const countriesData = JSON.parse(fileContent);
       if (!searchTerm) {
         res.send(countriesData);
         return;

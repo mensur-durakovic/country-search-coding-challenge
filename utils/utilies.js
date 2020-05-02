@@ -1,5 +1,6 @@
 const axios = require("../config/axios");
 const config = require("../config/config");
+
 /**
  * calculates distance between 2 geo-points using Haversine formula
  * @param {number} lat1 - latitude of first geo-point

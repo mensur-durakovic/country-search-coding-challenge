@@ -153,6 +153,7 @@ export default class Autocomplete extends Component {
           currentSuggestionIndex: 0,
           displaySuggestions: false,
           enteredText: filteredSuggestions[currentSuggestionIndex],
+          suggestionClicked: false,
         });
         break;
       }
@@ -246,7 +247,7 @@ export default class Autocomplete extends Component {
         <label htmlFor="countriesAutocompleteInput">{labelText}</label>
         <input
           id="countriesAutocompleteInput"
-          autoComplete="new-password"
+          autoComplete="off"
           ref={this.searchInputRef}
           className={styles.input}
           type="text"
