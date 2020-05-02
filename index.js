@@ -3,7 +3,6 @@ const logger = require("morgan");
 const bodyParser = require("body-parser");
 const config = require("./config/config");
 const constants = require("./constants/base");
-
 const countries = require("./routes/api/country");
 
 const app = express();
