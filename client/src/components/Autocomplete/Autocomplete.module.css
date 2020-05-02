@@ -1,0 +1,86 @@
+input {
+    padding: 0.6em;
+    width: 20vw;
+    font-size: 1em;
+    margin: 0 auto;
+    border: 0;
+    background-color: #f1f1f1;
+  }
+  
+  input:disabled {
+    cursor: not-allowed;
+  }
+  
+  label {
+    margin-top: 20vh;
+    width: 20vw;
+    padding: 0.6em;
+    text-align: center;
+    background-color: #a3d3ff;
+    border-radius: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .errorFetchingData{
+    color: #d63447;
+    padding: 0.6em;
+    text-align: center;
+  }
+  
+  .suggestions {
+    width: calc(20vw + 1rem + 4px);
+    max-height: 20vh;
+    list-style: none;
+    overflow-y: auto;
+    margin-top: 0;
+    border: 1px solid #d9d9d9;
+    border-top-width: 0;
+    padding-left: 0;
+  }
+  
+  .suggestions li {
+    padding: 0.6rem;
+  }
+  
+  .suggestions li:hover {
+    cursor: pointer;
+    background-color: #a3d3ff;
+  }
+  
+  .suggestions li:not(:last-of-type) {
+    border-bottom: 1px solid #d9d9d9;
+  }
+  
+  .activeSuggestion {
+    background-color: #a3d3ff;
+  }
+  
+  .noSuggestions {
+    color: #666;
+    padding: 0.5rem;
+    width: 20vw;
+    text-align: center;
+  }
+  
+  .loadingText {
+    margin-top: 20vh;
+    width: 20vw;
+    padding: 0.6em;
+    text-align: center;
+  }
+  
+  .markedText {
+    font-weight: bold;
+  }
+  
+  @media only screen and (max-width : 1024px) {
+    input, label {
+      width: 70vw;
+    }
+    .suggestions {
+      width: calc(70vw + 1rem + 4px);
+    }
+    .noSuggestions {
+      width: 70vw;
+    }
+  }
