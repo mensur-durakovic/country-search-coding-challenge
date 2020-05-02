@@ -10,17 +10,7 @@ const utilies = require("../../utils/utilies");
 router.get("/", async (req, res) => {
   try {
     const searchTerm = req.query.searchTerm ? req.query.searchTerm.toLowerCase() : '';
-    console.log("searchTerm", searchTerm);
-
-    const response = await axios.get(
-      `/check?access_key=${config.ipStackApiKey}`
-    );
-    console.log("result", response.data);
-
-    const userLatitude = response.data.latitude;
-    const userLongitude = response.data.longitude;
-    console.log("userLatitude", userLatitude);
-    console.log("userLongitude", userLongitude);
+    const usersGeoPoint = await utilies.getUsersCurrentGeoPoint();
 
     const filePath = path.join(
       __dirname,
@@ -42,8 +32,8 @@ router.get("/", async (req, res) => {
       );
       
       filteredCountries.sort((a, b) =>
-        utilies.calculateDistance(a.lat, userLatitude, a.lng, userLongitude) >
-        utilies.calculateDistance(b.lat, userLatitude, b.lng, userLongitude)
+        utilies.calculateDistance(a.lat, usersGeoPoint.latitude, a.lng, usersGeoPoint.longitude) >
+        utilies.calculateDistance(b.lat, usersGeoPoint.latitude, b.lng, usersGeoPoint.longitude)
           ? 1
           : -1
       );
