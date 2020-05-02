@@ -18,3 +18,5 @@ app.use("/api/countries", countries);
 app.listen(config.port, () => {
   console.log(`${constants.appName} running on port ${config.port}`);
 });
+
+module.exports = app; // for testing

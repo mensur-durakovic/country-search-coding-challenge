@@ -9,7 +9,7 @@ const utilies = require("../../utils/utilies");
 
 router.get("/", async (req, res) => {
   try {
-    const searchTerm = req.query.searchTerm;
+    const searchTerm = req.query.searchTerm ? req.query.searchTerm.toLowerCase() : '';
     console.log("searchTerm", searchTerm);
 
     const response = await axios.get(
@@ -40,7 +40,7 @@ router.get("/", async (req, res) => {
       const filteredCountries = countriesData.countries.filter((c) =>
         c.name.toLowerCase().includes(searchTerm)
       );
-      //filteredCountries.sort((a, b) => (a.color > b.color) ? 1 : -1)
+      
       filteredCountries.sort((a, b) =>
         utilies.calculateDistance(a.lat, userLatitude, a.lng, userLongitude) >
         utilies.calculateDistance(b.lat, userLatitude, b.lng, userLongitude)
